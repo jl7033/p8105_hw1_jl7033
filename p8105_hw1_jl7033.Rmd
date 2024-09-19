@@ -1,0 +1,13 @@
+---
+title: "p8105_hw1_jl7033"
+author: "Joe LaRocca"
+date: "2024-09-19"
+output: github_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+## Upload Palmer Penguins Data
+
