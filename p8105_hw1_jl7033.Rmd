@@ -1,7 +1,7 @@
 ---
-title: "p8105_hw1_jl7033"
+title: "P8105 - Homework 1"
 author: "Joe LaRocca"
-date: "2024-09-19"
+date: "September 19, 2024"
 output: github_document
 ---
 
@@ -12,11 +12,11 @@ library(tidyverse)
 
 ## Problem 1
 
+##### Upload the Palmer Penguins Data
+
 ```{r}
 
 data("penguins", package = "palmerpenguins")
-
-penguins
 
 ```
 
@@ -25,6 +25,8 @@ The data include the species of penguin, the island the penguin comes from, the 
 The dataset has `r nrow(penguins)` rows, meaning that there are `r nrow(penguins)` penguins in the dataset. It has `r ncol(penguins)` columns, so there are a total of `r ncol(penguins)` variables being measured.
 
 The mean flipper length is about `r round(mean(penguins$flipper_length_mm, na.rm = TRUE), 2)` mm, not including penguins for which the flipper length value is missing.
+
+##### Create the scatterplot for Flipper Length (y) vs. Bill Length (x)
 
 ```{r}
 
