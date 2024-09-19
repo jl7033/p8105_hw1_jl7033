@@ -44,4 +44,50 @@ ggsave(filename = "flipper_bill_plot.png",
 
 ```
 
+## Problem 2
 
+```{r}
+
+problem_2_df = tibble(
+  random_normal = rnorm(10, mean = 0, sd = 1),
+  logical = random_normal > 0,
+  character = c("a", "b", "c", "d", "e", "f", "g", "h", "i", "j"),
+  factor = factor(
+    c("High", "Medium", "Low", "Low", "Medium", 
+      "Medium", "High", "Low", "High", "Low"))
+)
+
+problem_2_df
+
+```
+##### Take the mean of the standard Normal and Logical column
+
+```{r}
+
+problem_2_df %>% 
+  pull(random_normal) %>% 
+  mean()
+
+```
+
+```{r}
+
+problem_2_df %>% 
+  pull(logical) %>% 
+  mean()
+
+```
+
+The means of the `random_normal` and `logical` columns are `r mean(problem_2_df$random_normal)` and `r mean(problem_2_df$logical)` respectively. The `character` and `factor` columns have no defined mean; when I try to take their mean, I get an error message saying that the argument is not numeric or logical.
+
+##### Try converting variables using as.numeric()
+
+```{r, eval = FALSE}
+
+problem_2_df %>% 
+  mutate(logical = as.numeric(logical)) %>% 
+  mutate(character = as.numeric(character)) %>% 
+  mutate(factor = as.numeric(factor))
+
+```
+Applying `as.numeric()` to the `logical` variable converts all "TRUE" values to "1" and all "FALSE" values to 0. Applying `as.numeric()` to the `character` variable converts all of the characters into `NA`. Applying `as.numeric()` to the `factor` variable converts the variable into numbers corresponding to the alphabetical order of the factor variable. In my case, all "HIGH" values were converted to "1", all "LOW" values were converted to "2", and all "MEDIUM" values were converted to "3".
